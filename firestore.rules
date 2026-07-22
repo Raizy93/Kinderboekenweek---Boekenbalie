@@ -1,0 +1,44 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function validScore(level) {
+      return request.resource.data.keys().hasOnly([
+          'playerName', 'level', 'score', 'accuracy', 'helped', 'bestStreak', 'createdAt'
+        ])
+        && request.resource.data.playerName is string
+        && request.resource.data.playerName.size() >= 1
+        && request.resource.data.playerName.size() <= 12
+        && request.resource.data.level == level
+        && request.resource.data.score is int
+        && request.resource.data.score >= 0
+        && request.resource.data.score <= 1000000
+        && request.resource.data.accuracy is int
+        && request.resource.data.accuracy >= 0
+        && request.resource.data.accuracy <= 100
+        && request.resource.data.helped is int
+        && request.resource.data.helped >= 0
+        && request.resource.data.helped <= 1000
+        && request.resource.data.bestStreak is int
+        && request.resource.data.bestStreak >= 0
+        && request.resource.data.bestStreak <= 1000
+        && request.resource.data.createdAt == request.time;
+    }
+
+    match /highscores_level_1/{scoreId} {
+      allow read: if true;
+      allow create: if validScore(1);
+      allow update, delete: if false;
+    }
+    match /highscores_level_2/{scoreId} {
+      allow read: if true;
+      allow create: if validScore(2);
+      allow update, delete: if false;
+    }
+    match /highscores_level_3/{scoreId} {
+      allow read: if true;
+      allow create: if validScore(3);
+      allow update, delete: if false;
+    }
+  }
+}

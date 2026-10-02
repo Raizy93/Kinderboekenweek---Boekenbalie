@@ -42,7 +42,7 @@ canvas:focus-visible { outline: 4px solid #ffd66b; outline-offset: -4px; }
 #fullscreen-button {
   position: absolute;
   right: 12px;
-  bottom: 12px;
+  top: 12px;
   z-index: 10;
   display: flex;
   align-items: center;
@@ -74,12 +74,16 @@ canvas:focus-visible { outline: 4px solid #ffd66b; outline-offset: -4px; }
   line-height: 0.7;
 }
 
-@media (max-width: 700px), (max-height: 600px) {
+@media (max-width: 700px) {
   #fullscreen-button {
     right: 8px;
-    bottom: 8px;
+    top: 8px;
     min-height: 34px;
     padding: 6px 8px;
     font-size: 10px;
+  }
+
+  #fullscreen-button .fullscreen-label {
+    display: none;
   }
 }

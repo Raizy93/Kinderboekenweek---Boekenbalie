@@ -238,7 +238,7 @@ export class LibraryScene extends Phaser.Scene {
     this.add.rectangle(576, 36, 1152, 64, 0x110b0d, 0.72).setDepth(49);
     this.add.rectangle(576, 31, 1152, 62, 0x633920, 1).setStrokeStyle(5, 0x211315).setDepth(50);
     this.add.rectangle(576, 31, 1134, 44, 0x21191f, 0.98).setStrokeStyle(2, 0xa46b36).setDepth(50);
-    [160, 330, 570, 790, 1010].forEach((x) => {
+    [160, 330, 570, 790, 885, 933, 996].forEach((x) => {
       this.add.rectangle(x, 31, 3, 36, 0x704126).setDepth(51);
     });
     this.scoreText = this.add.text(20, 18, "SCORE 0000", this.hudStyle()).setDepth(51);
@@ -251,27 +251,27 @@ export class LibraryScene extends Phaser.Scene {
       .setOrigin(0, 0.5).setDisplaySize(158, 35).setTint(0x493b36).setAlpha(0.82).setDepth(51);
     this.wormFill = this.add.image(609, 42, "bookworm-meter")
       .setOrigin(0, 0.5).setDisplaySize(158, 35).setDepth(52);
-    this.workdayText = this.add.text(808, 9, "WERKDAG 09:00", {
-      fontFamily: "monospace", fontSize: "14px", fontStyle: "bold", color: "#fff2d3",
+    this.workdayText = this.add.text(798, 10, "WERKDAG 09:00", {
+      fontFamily: "monospace", fontSize: "12px", fontStyle: "bold", color: "#fff2d3",
     }).setDepth(52);
-    this.add.rectangle(808, 44, 182, 14, 0x5d351f).setOrigin(0, 0.5).setStrokeStyle(2, 0x1e1214).setDepth(51);
-    this.add.rectangle(813, 44, 172, 8, 0x2b2228).setOrigin(0, 0.5).setDepth(51);
-    this.workdayFill = this.add.rectangle(813, 44, 0, 8, COLORS.gold).setOrigin(0, 0.5).setDepth(52);
-    const helpButton = this.add.image(1046, 30, "genre-sign")
-      .setDisplaySize(66, 38).setDepth(52).setInteractive({ useHandCursor: true });
-    this.add.rectangle(1046, 43, 54, 2, COLORS.gold).setDepth(52.5);
-    this.add.text(1046, 29, "HULP ?", {
-      fontFamily: "monospace", fontSize: "12px", fontStyle: "bold", color: "#fff2cc",
+    this.add.rectangle(798, 44, 82, 14, 0x5d351f).setOrigin(0, 0.5).setStrokeStyle(2, 0x1e1214).setDepth(51);
+    this.add.rectangle(803, 44, 72, 8, 0x2b2228).setOrigin(0, 0.5).setDepth(51);
+    this.workdayFill = this.add.rectangle(803, 44, 0, 8, COLORS.gold).setOrigin(0, 0.5).setDepth(52);
+    const helpButton = this.add.image(908, 30, "genre-sign")
+      .setDisplaySize(56, 38).setDepth(52).setInteractive({ useHandCursor: true });
+    this.add.rectangle(908, 43, 44, 2, COLORS.gold).setDepth(52.5);
+    this.add.text(908, 29, "HULP ?", {
+      fontFamily: "monospace", fontSize: "10px", fontStyle: "bold", color: "#fff2cc",
       stroke: "#211721", strokeThickness: 3,
     }).setOrigin(0.5).setDepth(53);
     helpButton.on("pointerover", () => helpButton.setTint(0xffe0a0));
     helpButton.on("pointerout", () => helpButton.clearTint());
     helpButton.on("pointerdown", () => this.showHelpMessage());
-    const audioButton = this.add.image(1115, 30, "genre-sign")
-      .setDisplaySize(66, 38).setDepth(52).setInteractive({ useHandCursor: true });
-    this.add.rectangle(1115, 43, 54, 2, COLORS.gold).setDepth(52.5);
-    this.audioButtonText = this.add.text(1115, 29, this.audioMuted ? "AUDIO UIT" : "AUDIO AAN", {
-      fontFamily: "monospace", fontSize: "10px", fontStyle: "bold", color: "#fff2cc",
+    const audioButton = this.add.image(968, 30, "genre-sign")
+      .setDisplaySize(56, 38).setDepth(52).setInteractive({ useHandCursor: true });
+    this.add.rectangle(968, 43, 44, 2, COLORS.gold).setDepth(52.5);
+    this.audioButtonText = this.add.text(968, 29, this.audioMuted ? "AUDIO UIT" : "AUDIO AAN", {
+      fontFamily: "monospace", fontSize: "8px", fontStyle: "bold", color: "#fff2cc",
       stroke: "#211721", strokeThickness: 3,
     }).setOrigin(0.5).setDepth(53);
     audioButton.on("pointerover", () => audioButton.setTint(0xffe0a0));
@@ -555,7 +555,7 @@ export class LibraryScene extends Phaser.Scene {
     const hours = Math.floor(clockMinutes / 60);
     const minutes = clockMinutes % 60;
     this.workdayText.setText(`WERKDAG ${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`);
-    this.workdayFill.width = 172 * progress;
+    this.workdayFill.width = 72 * progress;
   }
 
   private endWorkday(): void {

@@ -20,16 +20,66 @@ body {
 }
 
 #app {
-  display: grid;
-  place-items: center;
+  position: relative;
+  background: #16111e;
+}
+
+#app:fullscreen {
+  width: 100vw;
+  height: 100vh;
 }
 
 canvas {
+  display: block;
   max-width: 100%;
   max-height: 100%;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
-  box-shadow: 0 18px 60px #09060caa;
 }
 
 canvas:focus-visible { outline: 4px solid #ffd66b; outline-offset: -4px; }
+
+#fullscreen-button {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 7px 11px;
+  border: 3px solid #211315;
+  outline: 2px solid #a46b36;
+  outline-offset: -6px;
+  background: #2a1d20;
+  color: #fff2cc;
+  font: 700 11px/1 monospace;
+  cursor: pointer;
+  box-shadow: 3px 4px 0 #110b0d99;
+}
+
+#fullscreen-button:hover {
+  background: #513651;
+  color: #ffd66b;
+}
+
+#fullscreen-button:focus-visible {
+  outline: 3px solid #ffd66b;
+  outline-offset: 2px;
+}
+
+#fullscreen-button span[aria-hidden="true"] {
+  font-size: 19px;
+  line-height: 0.7;
+}
+
+@media (max-width: 700px), (max-height: 600px) {
+  #fullscreen-button {
+    right: 8px;
+    bottom: 8px;
+    min-height: 34px;
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+}

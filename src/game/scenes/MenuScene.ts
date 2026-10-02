@@ -78,7 +78,7 @@ export class MenuScene extends Phaser.Scene {
       { value: 1, title: "NIVEAU 1", subtitle: "Duidelijke kenmerken" },
       { value: 2, title: "NIVEAU 2", subtitle: "Kenmerken herkennen" },
       { value: 3, title: "NIVEAU 3", subtitle: "Aanwijzingen afwegen" },
-      { value: "mixed", title: "GEMENGD", subtitle: "Alle niveaus door elkaar" },
+      { value: "mixed", title: "GEMENGD", subtitle: "Alle niveaus · geen highscore" },
     ];
     const xs = [231, 461, 691, 921];
     options.forEach((option, index) => this.createDifficultyButton(xs[index]!, 410, option));
